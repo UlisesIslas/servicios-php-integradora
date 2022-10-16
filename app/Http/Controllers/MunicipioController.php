@@ -59,10 +59,11 @@ class MunicipioController extends Controller
      */
     public function show($id)
     {
+        $municipio = Municipio::find($id);
         return [
             "status" => true,
             "message" => "Sí",
-            "data" => $Municipio::find($id)
+            "data" => $municipio::find($id)
         ];
     }
 
