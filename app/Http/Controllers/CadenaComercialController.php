@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Municipio;
+use App\Models\CadenaComercial;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MunicipioController extends Controller
+class CadenaComercialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,11 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-        $municipios = Municipio::latest()->paginate(10);
+        $cadenas = CadenaComercial::latest()->paginate(10);
         return [
             "status" => true,
             "message" => "Sí",
-            "data" => $municipios
+            "data" => $cadenas
         ];
     }
 
@@ -41,39 +41,39 @@ class MunicipioController extends Controller
      */
     public function store(Request $request)
     {
-        $municipio = new Municipio();
-        $municipio->nombre = $request->nombre;
-        $municipio->save();
+        $cadena = new CadenaComercial();
+        $cadena->nombre = $request->nombre;
+        $cadena->estatus = true;
+        $cadena->save();
         return [
             "status" => true,
             "message" => "Sí",
-            "data" => $municipio
+            "data" => $cadena
         ];
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Municipio  $municipio
+     * @param  \App\Models\CadenaComercial  $cadenaComercial
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $municipio = Municipio::find($id);
         return [
             "status" => true,
             "message" => "Sí",
-            "data" => $municipio::find($id)
+            "data" => CadenaComercial::find($id)
         ];
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Municipio  $municipio
+     * @param  \App\Models\CadenaComercial  $cadenaComercial
      * @return \Illuminate\Http\Response
      */
-    public function edit(Municipio $municipio)
+    public function edit(CadenaComercial $cadenaComercial)
     {
         //
     }
@@ -82,34 +82,34 @@ class MunicipioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Municipio  $municipio
+     * @param  \App\Models\CadenaComercial  $cadenaComercial
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $municipio = Municipio::find($id);
-        $municipio->update($request->all());
+        $cadenaComercial = CadenaComercial::find($id);
+        $cadenaComercial->update($request->all());
         return [
             "status" => true,
             "message" => "Sí",
-            "data" => $municipio
+            "data" => $cadenaComercial
         ];
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Municipio  $municipio
+     * @param  \App\Models\CadenaComercial  $cadenaComercial
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $municipio = Municipio::find($id);
-        $municipio->delete();
+        $cadenaComercial = CadenaComercial::find($id);
+        $cadenaComercial->delete();
         return [
             "status" => true,
             "message" => "Sí",
-            "data" => "$municipio",
+            "data" => "$cadenaComercial",
         ];
     }
 }
