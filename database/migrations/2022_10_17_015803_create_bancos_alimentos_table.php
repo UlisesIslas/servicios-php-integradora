@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Municipio;
 
-class CreateUsersTable extends Migration
+class CreateBancosAlimentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('bancos_alimentos', function (Blueprint $table) {
             $table->id();
-            $table->string('correo', 45)->unique();
-            $table->string('password', 45);
-            $table->string('nombre', 45);
-            $table->string('apellido1', 45);
-            $table->string('apellido2', 45)->nullable();
-            $table->boolean('estatus');
+            $table->string('name', 45);
             $table->foreignIdFor(Municipio::class);
             $table->timestamps();
         });
@@ -34,6 +29,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('bancos_alimentos');
     }
 }
