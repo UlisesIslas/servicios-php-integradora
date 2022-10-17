@@ -1,7 +1,9 @@
 <?php
 use App\Http\Controllers\ConvenioController;
+use App\Http\Controllers\BancoAlimentoController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\CadenaComercialController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +24,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('municipios', MunicipioController::class);
 Route::resource('convenios', ConvenioController::class);
 Route::resource('cadenas_comerciales', CadenaComercialController::class);
+Route::resource('usuarios', UserController::class);
+Route::resource('bancos_alimentos', BancoAlimentoController::class);
