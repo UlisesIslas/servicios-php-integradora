@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\ConvenioController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\CadenaComercialController;
 use Illuminate\Http\Request;
@@ -19,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::resource('municipios', MunicipioController::class);
+Route::resource('convenios', ConvenioController::class);
 Route::resource('cadenas_comerciales', CadenaComercialController::class);
